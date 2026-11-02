@@ -1,0 +1,7 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+# Real deployment config contains your AWS account ID and role ARNs - never commit it
+.bedrock_agentcore.yaml

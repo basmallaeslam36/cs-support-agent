@@ -1,0 +1,26 @@
+# Sanitized example of the file `agentcore configure` generates.
+# The real .bedrock_agentcore.yaml contains your AWS account ID and ARNs, so it is git-ignored.
+default_agent: cs_support_agent
+agents:
+  cs_support_agent:
+    name: cs_support_agent
+    language: python
+    entrypoint: main.py
+    deployment_type: container
+    platform: linux/arm64
+    container_runtime: docker        # the generated default was "none" - see docs/REFLECTION.md
+    aws:
+      execution_role: arn:aws:iam::<ACCOUNT_ID>:role/<EXECUTION_ROLE>
+      account: "<ACCOUNT_ID>"
+      region: us-east-1
+      ecr_repository: <ACCOUNT_ID>.dkr.ecr.us-east-1.amazonaws.com/bedrock-agentcore-cs_support_agent
+      network_configuration:
+        network_mode: PUBLIC
+      protocol_configuration:
+        server_protocol: HTTP
+      observability:
+        enabled: true
+    memory:
+      mode: STM_AND_LTM
+      memory_id: <MEMORY_ID>
+      event_expiry_days: 30
